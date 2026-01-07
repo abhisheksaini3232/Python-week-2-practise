@@ -4,7 +4,7 @@ import pymongo
 # Connection
 @st.cache_resource
 def init_connection():
-    connectionString = "mongodb+srv://manojsaini653733_db_user:7mUuKvsYRBkRICcF@cluster0.noljb9f.mongodb.net/?retryWrites=true&w=majority"
+    connectionString = ""
     return pymongo.MongoClient(connectionString)
 
 client = init_connection()
