@@ -9,7 +9,7 @@ import time
 # Connection
 @st.cache_resource
 def init_connection():
-    connectionString = "mongodb+srv://manojsaini653733_db_user:7mUuKvsYRBkRICcF@cluster0.noljb9f.mongodb.net/?retryWrites=true&w=majorit"
+    connectionString = "mongodb+srv://manojsaini653733_db_user:7mUuKvsYRBkRICcF@cluster0.noljb9f.mongodb.net/?retryWrites=true&w=majority"
     return pymongo.MongoClient(connectionString)
 
 client = init_connection()
@@ -40,14 +40,14 @@ def mongo_connection_check(client):
             # client = args[0].client  # self.client
             client.admin.command('ping')
             st.success("MongoDB connection OK")
-        except (ConnectionFailure, ServerSelectionTimeoutError, PyMongoError) as e:
+        except Exception as e:
             st.error(f"MongoDB connection failed: {str(e)}")
             return None
         return func(*args, **kwargs)
     return wrapper
  return decorator
 
-class TodoList:
+class TodoList: 
     def __init__(self):
         self.todos = db['TODO_COLLECTION']
 
